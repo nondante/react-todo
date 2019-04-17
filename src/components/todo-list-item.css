@@ -1,3 +1,16 @@
-/* .todo-list-item {
-  font-size: 5rem;
-} */
+.todo-list-item-btn-group{
+  float: right;
+}
+
+.icon{
+  padding: 6px 6px;
+}
+
+.fa-exclamation:hover {
+  color: tomato;
+  
+}
+
+.fa-trash-o:hover {
+  color: green;
+}

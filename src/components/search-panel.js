@@ -6,8 +6,8 @@ import './search-panel.css'
 
 const SearchPanel = () => {
   return(
-    <div className="search-panel mt-3 row justify-content-between">
-      <input className="col-6 search-panel-input" placeholder="search" />
+    <div className="search-panel my-3 row justify-content-between">
+      <input className="col-md-6 col-sm-12 search-panel-input" placeholder="search" />
       <FilterButtonGroup />
     </div>
   )

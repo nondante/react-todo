@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import AppHeader from './app-header'
 import SearchPanel from './search-panel'
 import TodoList from './todo-list'
+import AddTodo from './add-todo'
+
+import './app.css'
 
 
 
@@ -30,6 +33,7 @@ const App = () => {
       <AppHeader />
       <SearchPanel />
       <TodoList todos={todoData}/>
+      <AddTodo />
     </div>
   )
 }
