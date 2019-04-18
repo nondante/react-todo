@@ -29,7 +29,15 @@ class FilterButtonGroup extends Component {
       <div className="filter-button-group pr-0 btn-group-sm col-md-6 col-sm-12">
         <div className="btn-group float-right p-0" role="group">
           {this.state.buttons.map(button => {
-            return <button key={button.id} id={button.id} type="button" className="btn btn-secondary">{button.label}</button>
+            let isActive = button.label === this.props.filterName;
+            let clazz = isActive? "btn btn-info" : "btn btn-outline-secondary";
+            return (<button 
+                      key={button.id} 
+                      id={button.id} 
+                      onClick={()=>{this.props.onFilterChange(button.label)}}
+                      type="button" 
+                      className={clazz}>{button.label}
+                    </button>)
           })}
         </div>
       </div>
