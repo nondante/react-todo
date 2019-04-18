@@ -9,33 +9,92 @@ import './app.css'
 
 
 
-const App = () => {
+class App extends Component {
 
-  const todoData = [
-    {
-      label: "Drink Coffee",
-      important: false,
-      id: 1
-    },
-    {
-      label: "Make Awesome App",
-      important: true,
-      id: 2
-    },{
-      label: "Have a lunch",
-      important: false,
-      id: 3
-    }
-  ]
+  state = {
+    appButtons: [],
+    todoData : [
+      {
+        label: "Drink Coffee",
+        important: false,
+        done:false,
+        visible: true,
+        id: 1
+      },
+      {
+        label: "Make Awesome App",
+        important: false,
+        done:false,
+        visible: true,
+        id: 2
+      },{
+        label: "Have a lunch",
+        important: false,
+        done:false,
+        visible: true,
+        id: 3
+      }
+    ]
+  } 
 
-  return (
-    <div className="container mt-5">
-      <AppHeader />
-      <SearchPanel />
-      <TodoList todos={todoData}/>
-      <AddTodo />
-    </div>
-  )
+  handleTogggleImportance = (id) => {
+    this.setState(prevState => {
+      const updatedTodo = prevState.todoData.map(todo=> {
+        if(todo.id===id){
+          todo.important = !todo.important
+        }
+        return todo
+      })
+      console.log(updatedTodo)
+      return {
+        todoData: updatedTodo
+      }
+    })
+  }
+
+  handleToggleDoneStatus = (id) => {
+    this.setState(prevState => {
+      const updatedTodo = prevState.todoData.map(todo=> {
+        if(todo.id===id){
+          todo.done = !todo.done
+        }
+        return todo
+      })
+      return {
+        todoData: updatedTodo
+      }
+    })
+  }
+
+  handleRemoveTodo = (id) => {
+    this.setState(prevState => {
+      const updatedTodo = prevState.todoData.filter(todo => {
+        if(todo.id!==id){
+          return todo
+        }
+      })
+      return {
+        todoData: updatedTodo
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div className="container mt-5">
+        <AppHeader />
+        <SearchPanel 
+        />
+        <TodoList 
+          todos={this.state.todoData}
+          toggleImportance={this.handleTogggleImportance}
+          toggleDoneStatus={this.handleToggleDoneStatus}
+          removeTodo={this.handleRemoveTodo}
+        />
+        <AddTodo />
+      </div>
+    )
+  }
 }
 
 export default App

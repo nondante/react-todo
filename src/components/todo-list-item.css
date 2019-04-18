@@ -1,5 +1,22 @@
+*:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.todo-list-item{
+  position: relative;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
 .todo-list-item-btn-group{
   float: right;
+  outline: none;
+}
+
+.todo-list-item-btn-group:focus{
+  outline: none;
 }
 
 .icon{
